@@ -6,47 +6,17 @@
 #include <string.h>
 #include <math.h>
 
-void cleanTable(Data *g)
-{
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            g->table[i][j] = -1;
-        }
-    }
-}
-
-void lineUi()
-{
-    printf("\n\n-----------------------------------\n\n");
-}
-
-void startUi()
-{
-    lineUi();
-    printf("\tTicTacToe Game!");
-    lineUi();
-
-    printf("Options:\n\n");
-    printf("(Local Multiplayer - 1)\n");
-    printf("(Singleplayer - 2)\n");
-    printf("(How to play? - 3)\n");
-    printf("(Exit - 4)");
-
-    printf("\n\n-> ");
-}
-
+//Main Control Function:
 void switchMode(int *op, Data *g)
 {
     switch (*op)
     {
     case 1:
-        cleanTable(g);
+        cleanBoard(g);
         multi(g);
         break;
     case 2:
-        cleanTable(g);
+        cleanBoard(g);
         single(g);
         break;
     case 3:
@@ -63,6 +33,18 @@ void switchMode(int *op, Data *g)
     }
 }
 
+//Others functions:
+void cleanBoard(Data *g)
+{
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            g->board[i][j] = -1;
+        }
+    }
+}
+
 int getOp()
 {
     char buffer[10];
@@ -74,7 +56,7 @@ int getOp()
     return op;
 }
 
-void showTable(int isTutorial, Data *g)
+void showBoard(int isTutorial, Data *g)
 {
     if(isTutorial == 0)
     {
@@ -131,11 +113,11 @@ void showTable(int isTutorial, Data *g)
 
 char intToChar(int i, int j, Data *g)
 {
-    if(g->table[i][j] == -1)
+    if(g->board[i][j] == -1)
     {
         return ' ';
     }
-    else if(g->table[i][j] == 0)
+    else if(g->board[i][j] == 0)
     {
         return 'X';
     }
@@ -190,7 +172,7 @@ void sortPlayer(Data *g)
 
 int canPlace(int i, int j, Data *g)
 {
-    if(g->table[i][j] != -1)
+    if(g->board[i][j] != -1)
     {
         return 0;
     }
@@ -220,7 +202,7 @@ void decoderInputPlayer(int m, Data *g)
 
     if(canPlace(i, j, g) == 1)
     {
-        g->table[i][j] = g->turn;
+        g->board[i][j] = g->turn;
     }
     else
     {
@@ -240,7 +222,7 @@ void checkGame(Data *g, int *r)
     //Testa linha
     for(int i = 0; i < 3; i++)
     {
-        if(g->table[i][0] == g->table[i][1] && g->table[i][1] == g->table[i][2] && g->table[i][0] != -1)
+        if(g->board[i][0] == g->board[i][1] && g->board[i][1] == g->board[i][2] && g->board[i][0] != -1)
         {
             g->gameMode = 0;
             
@@ -250,7 +232,7 @@ void checkGame(Data *g, int *r)
     //Testa coluna
     for(int j = 0; j < 3; j++)
     {
-        if(g->table[0][j] == g->table[1][j] && g->table[1][j] == g->table[2][j] && g->table[0][j] != -1)
+        if(g->board[0][j] == g->board[1][j] && g->board[1][j] == g->board[2][j] && g->board[0][j] != -1)
         {
             g->gameMode = 0;
             
@@ -258,14 +240,14 @@ void checkGame(Data *g, int *r)
         }
     }
     //Teste diagonal principal
-    if(g->table[0][0] == g->table[1][1] && g->table[1][1] == g->table[2][2] && g->table[0][0] != -1)
+    if(g->board[0][0] == g->board[1][1] && g->board[1][1] == g->board[2][2] && g->board[0][0] != -1)
     {
         g->gameMode = 0;
 
         *r = 1;
     }
     //Teste diagonal secundária
-    if(g->table[0][2] == g->table[1][1] && g->table[1][1] == g->table[2][0] && g->table[0][2] != -1)
+    if(g->board[0][2] == g->board[1][1] && g->board[1][1] == g->board[2][0] && g->board[0][2] != -1)
     {
         g->gameMode = 0;
 
@@ -307,6 +289,28 @@ void endGame(int result, Data *g)
         lineUi();
     }
 }
+//End others functions.
+
+//UI and Tutorial functions:
+void lineUi()
+{
+    printf("\n\n-----------------------------------\n\n");
+}
+
+void startUi()
+{
+    lineUi();
+    printf("\tTicTacToe Game!");
+    lineUi();
+
+    printf("Options:\n\n");
+    printf("(Local Multiplayer - 1)\n");
+    printf("(Singleplayer - 2)\n");
+    printf("(How to play? - 3)\n");
+    printf("(Exit - 4)");
+
+    printf("\n\n-> ");
+}
 
 void tutorial(Data *g)
 {   
@@ -316,7 +320,7 @@ void tutorial(Data *g)
     printf("\tHow to play:");
     lineUi();
 
-    showTable(1, g);
+    showBoard(1, g);
 
     lineUi();
     printf("When started your turn, you must input a number from 1-9, like the table show above.\nMake sure that your input isn't already marked!\n\n");

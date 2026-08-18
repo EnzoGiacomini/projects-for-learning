@@ -5,6 +5,7 @@
 #include <string.h>
 #include <math.h>
 
+//Main multiplayer function
 void multi(Data *g)
 {
     int gameResult = -1;
@@ -36,7 +37,7 @@ void playMulti(Data *g, int *r)
 
     printf("PLAYER: %s TURN!\n\n", g->nameTurn);
 
-    showTable(0, g);
+    showBoard(0, g);
 
     printf("Move position (1-9): ");
 
