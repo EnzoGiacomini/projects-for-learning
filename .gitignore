@@ -1,0 +1,147 @@
+# ============================================================
+#  projects-for-learning — global ignore rules
+#  Organized by language so new folders are covered up front.
+# ============================================================
+
+# ------------------------------------------------------------
+# Compiled binaries & object files (C / C++)
+# ------------------------------------------------------------
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+*.gch
+*.pch
+*.su
+*.idb
+*.pdb
+*.ilk
+*.map
+
+# Unsuffixed binaries produced by the projects here
+tictactoe
+calculator
+morse-translator
+
+# CMake / Make / Ninja
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.in
+compile_commands.json
+.ninja_deps
+.ninja_log
+
+# ------------------------------------------------------------
+# Java / JVM
+# ------------------------------------------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.jmod
+*.jsa
+*.hprof
+hs_err_pid*
+replay_pid*
+out/
+target/
+bin/
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+.mvn/timing.properties
+
+# ------------------------------------------------------------
+# Python
+# ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ------------------------------------------------------------
+# JavaScript / TypeScript / Node
+# ------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.next/
+.nuxt/
+.svelte-kit/
+coverage/
+*.tsbuildinfo
+
+# ------------------------------------------------------------
+# Rust
+# ------------------------------------------------------------
+/target/
+**/*.rs.bk
+
+# ------------------------------------------------------------
+# Go
+# ------------------------------------------------------------
+*.test
+vendor/
+
+# ------------------------------------------------------------
+# C# / .NET
+# ------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+
+# ------------------------------------------------------------
+# Environment & secrets — never commit these
+# ------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ------------------------------------------------------------
+# Editors & IDEs
+# ------------------------------------------------------------
+# .idea/ is intentionally tracked: it carries the JDK and module
+# setup so the project opens ready to run. IntelliJ's own
+# .idea/.gitignore already excludes the volatile files inside it.
+.vscode/
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.vs/
+*.sublime-workspace
+
+# ------------------------------------------------------------
+# OS noise
+# ------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
