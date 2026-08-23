@@ -123,9 +123,7 @@ vendor/
 # ------------------------------------------------------------
 # Editors & IDEs
 # ------------------------------------------------------------
-# .idea/ is intentionally tracked: it carries the JDK and module
-# setup so the project opens ready to run. IntelliJ's own
-# .idea/.gitignore already excludes the volatile files inside it.
+.idea/
 .vscode/
 !.vscode/settings.json
 *.swp

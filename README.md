@@ -14,7 +14,9 @@ install. Pick one, compile it, run it.
 │   ├── simple-calculator-cpp/    Four-operation calculator
 │   └── morse-code-translator/    Bidirectional Morse translator
 └── Java/
-    └── word-guesser-game/        Word guessing game
+    ├── word-guesser-game/        Word guessing game
+    ├── caesar-cipher/            Caesar cipher encryptor
+    └── weather-converter/        Fahrenheit → Celsius GUI converter
 ```
 
 One folder per language, one folder per project inside it. New languages get
@@ -60,6 +62,23 @@ Guess the secret word in five attempts. First Java project in the repo.
 javac -d out Java/word-guesser-game/WordGuesser.java && java -cp out WordGuesser
 ```
 
+### Java — [Caesar Cipher](Java/caesar-cipher)
+
+Encrypts text with a classic Caesar shift, wrapping letters within the
+alphabet while leaving non-letter characters untouched.
+
+```bash
+javac -d out Java/caesar-cipher/CaesarCipher.java && java -cp out CaesarCipher
+```
+
+### Java — [Weather Converter](Java/weather-converter)
+
+Small Swing GUI that converts a Fahrenheit input into Celsius.
+
+```bash
+javac -d out Java/weather-converter/WeatherConverter.java && java -cp out WeatherConverter
+```
+
 ## 🛠️ Requirements
 
 | Language | Toolchain           | Notes                                       |
@@ -70,8 +89,8 @@ javac -d out Java/word-guesser-game/WordGuesser.java && java -cp out WordGuesser
 
 ## 💡 Opening in IntelliJ IDEA
 
-The `.idea/` folder is committed on purpose, so the project opens with the JDK
-and module already configured. When you add a new Java project, right-click its
+The `.idea/` folder is git-ignored, so each clone keeps its own local project
+settings. When you open the repo or add a new Java project, right-click its
 folder and pick **Mark Directory as → Sources Root** — without that, IntelliJ
 won't show the ▶ run icon next to `main`.
 
